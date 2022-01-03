@@ -1,11 +1,12 @@
 use rand::Rng;
 use std::cmp::Ordering;
-use std::io;
+use std::io::{self, Write};
 
 fn main() {
   let secret_number = rand::thread_rng().gen_range(1..101);
   loop {
-    println!("input guess:");
+    print!("input guess: ");
+    io::stdout().flush().unwrap();
     let mut guess = String::new();
     io::stdin()
       .read_line(&mut guess)
